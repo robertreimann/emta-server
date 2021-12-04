@@ -1,10 +1,10 @@
-import express, { Request, Response, Application } from 'express';
+import express, { Request, Response } from 'express';
 
 const app = express();
 const port = process.env.PORT || 8080;
-app.get("/", (req: Request, res: Response) => {
-    res.send("Wassup");
+app.get('/', (req: Request, res: Response) => {
+	res.send('Hello World!');
 });
 app.listen(port, () => {
-    `Server Running here 👉 https://localhost:${port}`;
+	console.log(`Server Running here 👉 https://localhost:${port}`);
 });
