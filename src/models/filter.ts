@@ -24,7 +24,7 @@ export class Filter {
 	}
 }
 
-const getType = (element: string) => {
+const getType = (element: string): FilterType => {
 	switch (element) {
 	case FilterType.GREATER_THAN:
 		return FilterType.GREATER_THAN;

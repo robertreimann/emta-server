@@ -4,7 +4,7 @@ import { Company, parseCSV } from '../models/company';
 import { Filter } from '../models/filter';
 import { initializeSort } from '../models/sort';
 
-export function initializeRESTRoutes(router: Router) {
+export function initializeRESTRoutes(router: Router): void {
 	fs.readFile('/Users/Robert/EMTA/tax.csv', 'utf8', (err, data) => {
 		handleError(err);
 		const companies = parseCSV(data);
@@ -21,14 +21,14 @@ export function initializeRESTRoutes(router: Router) {
 	});
 }
 
-function handleError(err: NodeJS.ErrnoException | null) {
+function handleError(err: NodeJS.ErrnoException | null): void {
 	if (err) {
 		console.error(err);
 		return;
 	}
 }
 
-function filterCompanies(queryFilters: any, companies: Array<Company>) {
+function filterCompanies(queryFilters: any, companies: Array<Company>): Array<Company> {
 	const filters = Object.keys(queryFilters).filter(key => key !== 'sort').map(key => new Filter(key, queryFilters[key]));
 	return companies.filter(company => {
 		return filters.reduce((p: boolean, c: Filter) => {
